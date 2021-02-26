@@ -1,0 +1,32 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Task</th>
+        <th scope="col">Created</th>
+        <th scope="col">Due on</th>
+        <th scope="col">Owner</th>
+        <th scope="col">Mark</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for todo in todos %}
+        <tr>
+            <th scope="row">
+                <a href="#">
+                    {{ todo.task }}
+                </a>
+            </th>
+            <td>{{ todo.created|date:'d/m/y' }}</td>
+            <td>{{ todo.due_on|date:'d/m/y' }}</td>
+            <td>{{ todo.owner }}</td>
+            <td>
+                {% if not todo.mark %}
+                <button type="button" class="btn btn-info">Done</button>
+                {% else %}
+                <button type="button" class="btn btn-info">Not Done</button>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
